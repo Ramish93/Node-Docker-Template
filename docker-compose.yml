@@ -19,16 +19,12 @@ services:
       - /usr/src/app/node_modules
 
   # This is the configuration for our PostgreSQL database container
-  # Note the `postgres` name is important, in out Node app when we refer
-  # to  `host: "postgres"` that value is mapped on the network to the 
-  # address of this container.
+
   postgres:
     image: postgres:14.1-alpine
     restart: always
     environment:
       # You can set the value of environment variables
-      # in your docker-compose.yml file
-      # Our Node app will use these to connect
       # to the database
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
@@ -39,7 +35,7 @@ services:
     volumes:
       # When the PostgresSQL container is started it will run any scripts
       # provided in the `docker-entrypoint-initdb.d` directory, this connects
-      # our seed file to that directory so that it gets run
+
       - ./database-seed.sql:/docker-entrypoint-initdb.d/database-seed.sql
 
   # PostgreSQL pgAdmin panel accessible at http://localhost:16543/
