@@ -11,6 +11,7 @@ const client = new Client({
   host: "postgres",
 });
 
+
 app.use(express.static("public"));
 
 app.get("/employees", async (req, res) => {
